@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	
+		 <style type="text/css">
+		body,html{
+		            background-color: #333;
+		            transform-style: preserve-3d;
+		            perspective: 800px;
+		            overflow: hidden;
+		        }
+		        .photo{
+		            width: 250px;
+		            height: 250px;
+		            margin: 300px auto;
+		            position: relative;
+					 transform: rotateX(-20deg) rotate(0deg);
+					 transform-style: preserve-3d;
+		        }
+		        .photo img{
+					width: 150px;
+					height: 150px;
+		            position: absolute;
+		            left: 0;
+		            top: 0;
+		            user-select: none;
+		            border-radius: 5px;
+		            box-shadow:0px 0px 10px  #fff ;
+		        }
+				.img-1 {		
+				transform: rotateY(0) translateZ(360px);
+				transition: 1.1s;}
+				.img-2 {
+				transform: rotateY(30deg) translateZ(360px);
+				transition: 1.2s;}
+				.photo{
+					animation: run 30s; infinite-linear;
+				}
+				@keyframes run{
+					from{
+						transform: rotateX(-20deg);
+					}
+					to{ transform: rotateX(-20deg) rotateY(360deg);}
+				}
+
+		</style>
+	</head>
+	<body draggable="false">
+	    <div class="photo" draggable="false">
+	        <img src="images/1.jpg" draggable="false"/>
+	        <img src="images/2.jpg" draggable="false"/>
+	       <img src="images/3.jpg" draggable="false"/>
+	       <img src="images/4.jpg" draggable="false"/>
+	        <img src="images/5.jpg" draggable="false"/>
+	        <img src="images/6.jpg" draggable="false"/>
+	        <img src="images/7.jpg" draggable="false"/>
+	        <img src="images/8.jpg" draggable="false"/>
+	        <img src="images/9.jpg" draggable="false"/>
+	        <img src="images/10.jpg" draggable="false"/>
+	        <img src="images/11.jpg" draggable="false"/>
+	        <img src="images/12.jpg" draggable="false"/>
+	    </div>
+	</body>
+	<script type="text/javascript">
+	var imgArr = document.getElementsByTagName("img");		
+	var Deg = 360/imgArr.length;
+	window.onload = function () {
+	 for(var i=0;i<imgArr.length;i++){	        console.log(imgArr[i].style.transform);
+	imgArr[i].style.transform = 'rotateY('+Deg*i+'deg) translateZ(360px)';
+	imgArr[i].style.transition = '1s '+(imgArr.length-i)*0.1+'s';
+	 }
+	};
+	</script>
+
+</html>
